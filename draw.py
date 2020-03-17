@@ -37,7 +37,7 @@ def generate_sphere( points, cx, cy, cz, r, step ):
             x=r*math.cos(math.pi*t2)+cx
             y=r*math.sin(math.pi*t2)*math.cos(2*math.pi*t1)+cy
             z=r*math.sin(math.pi*t2)*math.sin(2*math.pi*t1)+cz
-            add_edge(points,x,y,z,x,y,z)
+            add_edge(points,x,y,z,x+1,y+1,z+1)
             t2+=step
         t1+=step
         t2=0.0
@@ -70,7 +70,7 @@ def generate_torus( points, cx, cy, cz, r0, r1, step ):
             x=math.cos(2*math.pi*t1)*(r0*math.cos(math.pi*t2)+r1)+cx
             y=r0*math.sin(math.pi*t2)+cy
             z=-1*math.sin(2*math.pi*t1)*(r0*math.cos(math.pi*t2)+r1)+cz
-            add_edge(points,x,y,z,x,y,z)
+            add_edge(points,x,y,z,x+1,y+1,z+1)
             t2+=step
         t1+=step
         t2=0.0
