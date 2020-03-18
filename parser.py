@@ -47,14 +47,14 @@ The file follows the following format:
 
 See the file script for an example of the file format
 """
-ARG_COMMANDS = [ 'circle', 'bezier', 'hermite', 'box', 'sphere', 'torus', 'line', 'scale', 'move', 'rotate', 'save','quit','clear' ]
+ARG_COMMANDS = [ 'circle', 'bezier', 'hermite', 'box', 'sphere', 'torus', 'line', 'scale', 'move', 'rotate', 'save' ]
 
 def parse_file( fname, edges, transform, screen, color ):
 
     f = open(fname)
     lines = f.readlines()
 
-    step = 0.01
+    step = 0.05
 
     c = 0
     while c < len(lines):
@@ -64,7 +64,6 @@ def parse_file( fname, edges, transform, screen, color ):
         if line in ARG_COMMANDS:
             c+= 1
             args = lines[c].strip().split(' ')
-
         if line == 'circle':
             #print 'CIRCLE\t' + str(args)
             add_circle(edges,
@@ -72,7 +71,6 @@ def parse_file( fname, edges, transform, screen, color ):
                        float(args[3]), step)
 
         elif line == 'hermite' or line == 'bezier':
-            print("step 1")
             add_curve(edges,
                       float(args[0]), float(args[1]),
                       float(args[2]), float(args[3]),
